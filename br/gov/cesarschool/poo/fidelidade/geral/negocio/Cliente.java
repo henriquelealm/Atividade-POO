@@ -15,9 +15,6 @@ public class Cliente extends Endereco{
     public Sexo getSexo() {
         return sexo;
     }
-    public void setSexo(Sexo sexo) {
-        this.sexo = sexo;
-    }
     public Endereco getEndereco() {
         return endereco;
     }
@@ -32,6 +29,12 @@ public class Cliente extends Endereco{
     }
     public double getRenda() {
         return renda;
+    }
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
+    }
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
