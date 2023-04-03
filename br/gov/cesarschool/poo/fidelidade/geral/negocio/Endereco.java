@@ -1,7 +1,7 @@
 package br.gov.cesarschool.poo.fidelidade.geral.negocio;
 
 public class Endereco{
-    
+
     private String logradouro;
     private int numero;
     private String complemento;
@@ -51,6 +51,9 @@ public class Endereco{
     }
     public void setPais(String pais) {
         this.pais = pais;
+    }
+    public Endereco(){
+
     }
     public Endereco(String logradouro, int numero, String complemento, String cep, String cidade, String estado,
             String pais) {

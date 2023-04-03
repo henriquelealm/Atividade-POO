@@ -48,7 +48,9 @@ public class Cliente extends Endereco{
     public void setRenda(double renda) {
         this.renda = renda;
     }
-
+    public Cliente(){
+        
+    }
     public Cliente(String logradouro, int numero, String complemento, String cep, String cidade, String estado,
             String pais, String cpf, String nomeCompleto, Date dataNascimento, double renda, Endereco endereco,
             Sexo sexo) {
