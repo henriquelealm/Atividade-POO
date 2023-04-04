@@ -6,7 +6,7 @@ public class CartaoFidelidade{
 
     private long numero;
     private double saldo;
-    java.util.Date dataHoraAtualizacao;
+    private java.util.Date dataHoraAtualizacao;
 
     public CartaoFidelidade(){
     }

@@ -5,7 +5,7 @@ import java.util.Date;
 public class LancamentoExtrato {
     private long numeroCartao;
     private int quantidadePontos;
-    java.util.Date dataHoraLancamento;
+    private java.util.Date dataHoraLancamento;
 
     public LancamentoExtrato(long numeroCartao, int quantidadePontos, Date dataHoraLancamento) {
         this.numeroCartao = numeroCartao;
