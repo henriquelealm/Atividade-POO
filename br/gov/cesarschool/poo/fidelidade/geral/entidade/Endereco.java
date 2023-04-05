@@ -1,4 +1,4 @@
-package br.gov.cesarschool.poo.fidelidade.geral.negocio;
+package br.gov.cesarschool.poo.fidelidade.geral.entidade;
 
 public class Endereco{
 

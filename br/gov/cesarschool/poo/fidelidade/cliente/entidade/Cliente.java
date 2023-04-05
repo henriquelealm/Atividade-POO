@@ -1,6 +1,6 @@
-package br.gov.cesarschool.poo.fidelidade.cliente.negocio;
-import br.gov.cesarschool.poo.fidelidade.geral.negocio.*;
-
+package br.gov.cesarschool.poo.fidelidade.cliente.entidade;
+import br.gov.cesarschool.poo.fidelidade.geral.entidade.Endereco;
+import br.gov.cesarschool.poo.fidelidade.geral.entidade.Sexo;
 
 import java.util.Date;
 
