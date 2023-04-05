@@ -7,8 +7,6 @@ import br.gov.cesarschool.poo.fidelidade.cartao.negocio.CartaoFidelidadeMediator
 import br.gov.cesarschool.poo.fidelidade.cliente.entidade.Cliente;
 import br.gov.cesarschool.poo.fidelidade.cartao.dao.LancamentoExtratoDAO;
 
-import javax.security.sasl.SaslException;
-import java.util.Date;
 
 import br.gov.cesarschool.poo.fidelidade.cartao.dao.CartaoFidelidadeDAO;
 import br.gov.cesarschool.poo.fidelidade.util.ResultadoInclusaoCliente;
