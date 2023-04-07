@@ -31,7 +31,7 @@ public class ClienteMediator {
 
     private ClienteMediator() {
         this.repositorioCliente = new ClienteDAO();
-        this.cartaoMediator = CartaoFidelidadeMediator.getInstance(repositorioCartao, repositorioLancamento);
+        this.cartaoMediator = CartaoFidelidadeMediator.getInstance();
     }
 
     

@@ -6,7 +6,7 @@ import br.gov.cesarschool.poo.fidelidade.cartao.dao.CartaoFidelidadeDAO;
 import br.gov.cesarschool.poo.fidelidade.cartao.entidade.CartaoFidelidade;
 
 import java.time.LocalDateTime;
-//Terminar esse mediator;
+//Terminar esse mediator -> Funções PONTUAR, RESGATAR;
 public class CartaoFidelidadeMediator {
 
     private static CartaoFidelidadeMediator instancia;
@@ -15,17 +15,17 @@ public class CartaoFidelidadeMediator {
 
 
 
-    public static CartaoFidelidadeMediator getInstance(CartaoFidelidadeDAO repositorioCartao, LancamentoExtratoDAO repositorioLancamento){
+    public static CartaoFidelidadeMediator getInstance(){
         if (instancia == null){
-            instancia = new CartaoFidelidadeMediator(repositorioCartao, repositorioLancamento);
+            instancia = new CartaoFidelidadeMediator();
         }
         return instancia;
     }
     
-    public CartaoFidelidadeMediator(CartaoFidelidadeDAO repositorioCartao, LancamentoExtratoDAO repositorioLancamento) {
-        this.repositorioCartao = repositorioCartao;
-        this.repositorioLancamento = repositorioLancamento;
-        CartaoFidelidadeMediator.instancia = CartaoFidelidadeMediator.getInstance(repositorioCartao, repositorioLancamento);
+    public CartaoFidelidadeMediator() {
+        repositorioCartao = new CartaoFidelidadeDAO();
+        repositorioLancamento = new LancamentoExtratoDAO();
+
     }
     //1º metodo  
     public long gerarCartao(Cliente cliente){
