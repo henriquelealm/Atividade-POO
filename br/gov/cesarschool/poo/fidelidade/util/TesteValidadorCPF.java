@@ -1,37 +1,47 @@
 package br.gov.cesarschool.poo.fidelidade.util;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import java.util.Date;
-import br.gov.cesarschool.poo.fidelidade.cliente.entidade.*;
-
-import br.gov.cesarschool.poo.fidelidade.geral.entidade.*;
-
-import org.junit.*;
-
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 public class TesteValidadorCPF {
-    Date data = new Date(System.currentTimeMillis());
 
     @Test
-    public void CPFNuloOuBranco(){
-        Endereco endereco = new Endereco("Rua A", 0, "123", "Centro", "Recife", "PE", "Brasil");
-        Cliente cliente1 = new Cliente("07521772490", "afdasfsa", Sexo.MASCULINO, data, 55.05, endereco);
-        assertFalse(StringUtil.ehNuloOuBranco(cliente1.getCpf()));
-        Cliente cliente2 = new Cliente("", "fasdfdsaf", Sexo.MASCULINO, data, 55.05, endereco);
-        assertTrue(StringUtil.ehNuloOuBranco(cliente2.getCpf()));
+    public void testEhCpfValido_CPFNulo() {
+        assertFalse(ValidadorCPF.ehCpfValido(null));
     }
+    
     @Test
-    public void CPFTamanhoInvalido(){
-        Endereco endereco = new Endereco("Rua A", 0, "123", "Centro", "Recife", "PE", "Brasil");
-        Cliente cliente1 = new Cliente("075217724909", "afdasfsa", Sexo.MASCULINO, data, 55.05, endereco);
-        assertFalse(ValidadorCPF.ehCpfValido(cliente1.getCpf()));
+    public void testEhCpfValido_CPFBranco() {
+        assertFalse(ValidadorCPF.ehCpfValido(""));
     }
+
     @Test
-    public void CPFDigitoInvalido(){
-        Endereco endereco = new Endereco("Rua A", 0, "123", "Centro", "Recife", "PE", "Brasil");
-        Cliente cliente1 = new Cliente("075217AB4909", "afdasfsa", Sexo.MASCULINO, data, 55.05, endereco);
-        assertFalse(ValidadorCPF.ehCpfValido(cliente1.getCpf()));
+    public void testEhCpfValido_CPFTamanhoDiferenteDe11() {
+        assertFalse(ValidadorCPF.ehCpfValido("1234567890"));
+        assertFalse(ValidadorCPF.ehCpfValido("123456789012"));
+        assertFalse(ValidadorCPF.ehCpfValido("123"));
+    }
+
+    @Test
+    public void testEhCpfValido_CPFComCaracteresDiferentes() {
+        assertFalse(ValidadorCPF.ehCpfValido("J2a45b7890c"));
+    }
+
+    @Test
+    public void testEhCpfValido_CPFComDVInvalido() {
+        assertFalse(ValidadorCPF.ehCpfValido("12345678900"));
+        assertFalse(ValidadorCPF.ehCpfValido("52998224726"));
+        assertFalse(ValidadorCPF.ehCpfValido("12345678910"));
+        assertFalse(ValidadorCPF.ehCpfValido("52998224727"));
+    }
+
+    @Test
+    public void testEhCpfValido_CPFComDvValido() {
+        assertTrue(ValidadorCPF.ehCpfValido("12345678909"));
+        assertTrue(ValidadorCPF.ehCpfValido("52998224725"));
+        assertTrue(ValidadorCPF.ehCpfValido("13677724007"));
+        assertTrue(ValidadorCPF.ehCpfValido("29419241084"));
+        assertTrue(ValidadorCPF.ehCpfValido("82925083099"));
+        assertTrue(ValidadorCPF.ehCpfValido("82732209074"));
     }
 }
