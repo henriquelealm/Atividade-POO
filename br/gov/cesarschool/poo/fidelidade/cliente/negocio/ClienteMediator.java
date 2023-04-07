@@ -20,7 +20,6 @@ public class ClienteMediator {
     private CartaoFidelidadeDAO repositorioCartao;
     private LancamentoExtratoDAO repositorioLancamento;
 
-    Cliente cliente = new Cliente(null, null, null, null, 0, null);
     
     public static ClienteMediator getInstance() {
         if (instancia == null) {
@@ -95,6 +94,33 @@ public class ClienteMediator {
             return new ResultadoInclusaoCliente(NUMERO_ERRO, "Erro ao criar cartao fidelidade");
         }
         return new ResultadoInclusaoCliente(numeroCartao, null);
+    }
+
+    public String alterar(Cliente cliente) {
+        String mensagemErro = validar(cliente);
+        
+        if (mensagemErro != null) {
+            return mensagemErro;
+        }
+    
+        Cliente clienteExistente = repositorioCliente.buscar(cliente.getCpf());
+        if (clienteExistente == null) {
+            return "Cliente não encontrado";
+        }
+    
+        // Não é permitido alterar o CPF do cliente
+        if (!clienteExistente.getCpf().equals(cliente.getCpf())) {
+            return "Não é permitido alterar o CPF do cliente";
+        }
+    
+        clienteExistente.setNomeCompleto(cliente.getNomeCompleto());
+        clienteExistente.setSexo(cliente.getSexo());
+        clienteExistente.setDataNascimento(cliente.getDataNascimento());
+        clienteExistente.setRenda(cliente.getRenda());
+        clienteExistente.setEndereco(cliente.getEndereco());
+    
+        repositorioCliente.alterar(clienteExistente);
+        return null;
     }
     //Fazer método String validar para os outros atributos de cliente - nome, data de nascimento, rua, cidade, numero, etc.
 }
